@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="AptekaIS.Views.UserControls.ReceiptView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- BUTTONS -->
+        <WrapPanel Grid.Row="0" Margin="0,0,0,15">
+
+            <Button Content="Просмотреть"
+                    Width="150"
+                    Margin="0,0,10,10"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="OpenReceipt_Click"/>
+
+        </WrapPanel>
+
+        <!-- TABLE (приведен к общему стилю) -->
+        <DataGrid x:Name="ReceiptsDataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="№"
+                                    Binding="{Binding Id}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Дата заявки"
+                                    Binding="{Binding RequestDate, StringFormat='dd.MM.yyyy'}"
+                                    Width="2*"/>
+
+                <DataGridTextColumn Header="Поставщик"
+                                    Binding="{Binding SupplierName}"
+                                    Width="3*"/>
+
+                <DataGridTextColumn Header="Статус"
+                                    Binding="{Binding Status}"
+                                    Width="2*"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,240 @@
+﻿<Window x:Class="AptekaIS.Views.AddEditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Товар"
+        Height="720"
+        Width="1050"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid Margin="25">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- TITLE -->
+            <TextBlock Text="Информация о товаре"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <!-- TOP -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LEFT -->
+                <Border Style="{StaticResource InputBorderStyle}" Padding="15" Margin="0,0,10,0">
+                    <StackPanel>
+
+                        <TextBlock Text="Основные данные"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Название"/>
+                        <TextBox x:Name="NameTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Производитель"/>
+                        <ComboBox x:Name="ManufacturerComboBox"
+                                  Height="35"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"/>
+
+                        <TextBlock Text="Форма выпуска"/>
+                        <ComboBox x:Name="FormComboBox"
+                                  Height="35"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"/>
+
+                        <TextBlock Text="Упаковка"/>
+                        <ComboBox x:Name="PackageComboBox"
+                                  Height="35"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"/>
+
+                        <TextBlock Text="Категория"/>
+                        <ComboBox x:Name="MainCategoryComboBox"
+                                  Height="35"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"
+                                  SelectionChanged="MainCategoryComboBox_SelectionChanged"/>
+
+                        <TextBlock Text="Подкатегория"/>
+                        <ComboBox x:Name="SubCategoryComboBox"
+                                  Height="35"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"/>
+
+                        <!-- FIX CHECKBOX -->
+                        <Border Margin="0,12,0,0"
+                                Padding="10"
+                                Background="#F8FAFC"
+                                CornerRadius="6">
+
+                            <CheckBox x:Name="PrescriptionCheckBox"
+                                      Content="Рецептурный товар"
+                                      FontWeight="SemiBold"
+                                      VerticalAlignment="Center"/>
+
+                        </Border>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- RIGHT -->
+                <Border Grid.Column="1"
+                        Style="{StaticResource InputBorderStyle}"
+                        Padding="15"
+                        Margin="10,0,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Характеристики"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Дозировка"/>
+                        <TextBox x:Name="DosageTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Объём"/>
+                        <TextBox x:Name="VolumeTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Вещество"/>
+                        <TextBox x:Name="SubstanceTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Цена"/>
+                        <TextBox x:Name="PriceTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Количество"/>
+                        <TextBox x:Name="QuantityTextBox"
+                                 Style="{StaticResource ModernTextBoxStyle}"/>
+
+                        <TextBlock Text="Срок годности"/>
+                        <DatePicker x:Name="ExpiryDatePicker" Height="35"/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+            <!-- BOTTOM -->
+            <Border Grid.Row="2"
+                    Style="{StaticResource InputBorderStyle}"
+                    Margin="0,15,0,0"
+                    Padding="15">
+
+                <StackPanel>
+
+                    <!-- IMAGE (СТРОКА, НЕ БЛОК) -->
+                    <TextBlock Text="Изображение товара"
+           FontWeight="SemiBold"
+           Margin="0,0,0,10"/>
+
+                    <Border Style="{StaticResource InputBorderStyle}"
+        Padding="8">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox x:Name="ImageFileNameTextBox"
+                 Height="32"
+                 Margin="0"
+                 Padding="8,0"
+                 VerticalContentAlignment="Center"
+                 IsReadOnly="True"/>
+
+                            <Button Content="Выбрать"
+                Grid.Column="1"
+                Width="120"
+                Height="32"
+                Margin="8,0,0,0"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Click="SelectImageButton_Click"/>
+                        </Grid>
+
+                    </Border>
+
+                    <!-- SPECIAL PROPERTIES (ОГРАНИЧЕННЫЙ БЛОК) -->
+                    <TextBlock Text="Специальные свойства"
+                               Margin="0,12,0,5"
+                               FontWeight="SemiBold"/>
+
+                    <Border Background="#FAFAFA"
+                            CornerRadius="6"
+                            Padding="8"
+                            BorderBrush="#E0E0E0"
+                            BorderThickness="1">
+
+                        <ItemsControl x:Name="SpecialPropertiesItemsControl">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}"
+                                              IsChecked="{Binding IsSelected}"
+                                              Margin="10,5"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                        </ItemsControl>
+
+                    </Border>
+
+                    <!-- DESCRIPTION -->
+                    <TextBlock Text="Описание"
+                               Margin="0,12,0,5"
+                               FontWeight="SemiBold"/>
+
+                    <TextBox x:Name="DescriptionTextBox"
+                             Height="80"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Style="{StaticResource ModernTextBoxStyle}"/>
+
+                    <!-- BUTTONS -->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,15,0,0">
+
+                        <Button Content="Сохранить"
+                                Width="150"
+                                Margin="0,0,10,0"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="SaveButton_Click"/>
+
+                        <Button Content="Отмена"
+        Width="150"
+        Style="{StaticResource SecondaryButtonStyle}"
+        Click="CancelButton_Click"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

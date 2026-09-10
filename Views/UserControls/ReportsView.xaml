@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="AptekaIS.Views.UserControls.ReportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Фильтры -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,15">
+
+            <ComboBox x:Name="ReportTypeComboBox"
+                      Width="250"
+                      Height="35"
+                      Margin="0,0,10,0">
+
+                <ComboBoxItem Content="Продажи"
+                              IsSelected="True"/>
+
+                <ComboBoxItem Content="Приход товаров"/>
+
+                <ComboBoxItem Content="Списания"/>
+
+                <ComboBoxItem Content="Заявки"/>
+
+            </ComboBox>
+
+            <DatePicker x:Name="DateFrom"
+                        Width="150"
+                        Height="35"
+                        Margin="0,0,10,0"/>
+
+            <DatePicker x:Name="DateTo"
+                        Width="150"
+                        Height="35"
+                        Margin="0,0,10,0"/>
+            <Button Content="Сформировать"
+        Width="140"
+        Height="35"
+        Margin="0,0,10,0"
+        Style="{StaticResource PrimaryButtonStyle}"
+        Foreground="White"
+        Click="GenerateReport_Click"/>
+
+            <Button Content="Экспорт в Excel"
+        Width="150"
+        Height="35"
+        Style="{StaticResource SecondaryButtonStyle}"
+        Click="ExportExcel_Click"/>
+
+        </StackPanel>
+
+        <!-- Таблица отчёта -->
+        <DataGrid x:Name="ReportGrid"
+                  Grid.Row="2"
+                  AutoGenerateColumns="True"
+                  BorderThickness="0"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  RowHeight="40"
+                  FontSize="13"
+                  AlternatingRowBackground="#F8F9FA"
+                  HeadersVisibility="Column"/>
+
+    </Grid>
+
+</UserControl>

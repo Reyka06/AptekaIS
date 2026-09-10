@@ -1,0 +1,186 @@
+﻿<Window x:Class="AptekaIS.Views.AddEditRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Создание заявки"
+        Height="700"
+        Width="900"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <TextBlock Text="Новая заявка поставщику"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   Margin="0,0,0,15"/>
+
+        <!-- MAIN -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="8"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                Padding="15">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- SUPPLIER -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+
+                    <TextBlock Text="Поставщик:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0"
+                               FontWeight="SemiBold"/>
+
+                    <ComboBox x:Name="SupplierComboBox"
+                              Width="260"
+                              Height="35"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="Id"
+                              SelectionChanged="SupplierComboBox_SelectionChanged"/>
+
+                </StackPanel>
+
+                <!-- SEARCH -->
+                <Border Grid.Row="1"
+                        Background="#FAFAFA"
+                        CornerRadius="6"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="1"
+                        Padding="5"
+                        Margin="0,0,0,12">
+
+                    <TextBox x:Name="SearchTextBox"
+                             BorderThickness="0"
+                             FontSize="14"
+                             Padding="10,6"
+                             VerticalContentAlignment="Center"
+                             TextChanged="SearchTextBox_TextChanged"/>
+
+                </Border>
+
+                <!-- PRODUCTS -->
+                <Border Grid.Row="2"
+                        Background="#FAFAFA"
+                        CornerRadius="6"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="1"
+                        Padding="8">
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                        <ItemsControl x:Name="ProductsItemsControl">
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border BorderBrush="#E0E0E0"
+                                            BorderThickness="0,0,0,1"
+                                            Padding="8">
+
+                                        <Grid VerticalAlignment="Center">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- CHECK -->
+                                            <CheckBox Grid.Column="0"
+                                                      IsChecked="{Binding IsSelected}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,0,10,0"/>
+
+                                            <!-- INFO -->
+                                            <StackPanel Grid.Column="1">
+
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontWeight="SemiBold"/>
+
+                                                <TextBlock Text="{Binding ManufacturerName}"
+                                                           FontSize="11"
+                                                           Foreground="Gray"/>
+
+                                                <TextBlock Text="{Binding Quantity, StringFormat='Остаток: {0} шт.'}"
+                                                           FontSize="11"
+                                                           Foreground="Gray"/>
+
+                                            </StackPanel>
+
+                                            <!-- INPUT -->
+                                            <TextBox Grid.Column="2"
+                                                     Width="80"
+                                                     Height="30"
+                                                     Margin="10,0"
+                                                     VerticalAlignment="Center"
+                                                     VerticalContentAlignment="Center"
+                                                     HorizontalContentAlignment="Center"
+                                                     FontSize="13"
+                                                     Padding="0"
+                                                     Text="{Binding RequestedQuantity, UpdateSourceTrigger=PropertyChanged}"
+                                                     IsEnabled="{Binding IsSelected}"/>
+
+                                            <!-- UNIT -->
+                                            <TextBlock Grid.Column="3"
+                                                       Text="шт."
+                                                       VerticalAlignment="Center"
+                                                       Foreground="Gray"
+                                                       Margin="5,0,0,0"/>
+
+                                        </Grid>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                        </ItemsControl>
+
+                    </ScrollViewer>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+        <!-- BUTTONS -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,0,0">
+
+            <Button Content="Отмена"
+                    Width="120"
+                    Height="35"
+                    Margin="0,0,10,0"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Click="CancelButton_Click"/>
+
+            <Button Content="Создать заявку"
+                    Width="160"
+                    Height="35"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="CreateRequestButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

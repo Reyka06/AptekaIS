@@ -1,0 +1,137 @@
+﻿<Window x:Class="AptekaIS.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:AptekaIS.Views.UserControls"
+        Title="Аптечная система"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Background="{StaticResource BackgroundColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0"
+                Background="{StaticResource PrimaryColor}">
+
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="/Resource/sign-emergency.ico" Width="30" Height="30" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="UserInfoText"
+                               Text="Загрузка..."
+                               Foreground="White"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="TimeText"
+                               Foreground="#DDFFFFFF"
+                               FontSize="15"
+                               Margin="0,0,20,0"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="ExitButton"
+                            Style="{StaticResource HeaderExitButtonStyle}"
+                            Click="CloseButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Контент -->
+        <Grid Grid.Row="1" Margin="5">
+            <TabControl x:Name="MainTabControl" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem x:Name="TabCashier">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/cashier.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Касса" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:CashierView x:Name="CashierViewControl"/>
+                </TabItem>
+
+                <TabItem x:Name="TabRequests">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/requests.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Заявки" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:RequestsView/>
+                </TabItem>
+
+                <TabItem x:Name="TabReceipt">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/receipt.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Приход" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:ReceiptView x:Name="ReceiptViewControl"/>
+                </TabItem>
+
+                <TabItem x:Name="TabWriteOff">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/writeoff.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Списание" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:WriteOffView/>
+                </TabItem>
+
+                <TabItem x:Name="TabReports">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/reports.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Отчёты" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:ReportsView/>
+                </TabItem>
+
+                <TabItem x:Name="TabProducts">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/products.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Товары" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:ProductsView x:Name="ProductsViewControl"/>
+                </TabItem>
+
+                <TabItem x:Name="TabSuppliers">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/suppliers.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Поставщики" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:SuppliersView/>
+                </TabItem>
+
+                <TabItem x:Name="TabUsers">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resource/users.png" Width="30" Height="30" Margin="0,0,8,0"/>
+                            <TextBlock Text="Пользователи" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <uc:UsersView/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

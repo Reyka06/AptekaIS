@@ -1,0 +1,92 @@
+﻿<Window x:Class="AptekaIS.Views.AddEditWriteOffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Списание товара"
+        Height="430"
+        Width="550"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Списание товара"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   Margin="0,0,0,20"/>
+
+        <!-- Основной блок -->
+        <Border Grid.Row="1"
+                Style="{StaticResource InputBorderStyle}"
+                Padding="15">
+
+            <StackPanel>
+
+                <TextBlock Text="Товар"
+                           FontWeight="SemiBold"/>
+
+                <ComboBox x:Name="ProductComboBox"
+          Height="35"
+          Margin="0,5,0,15"
+          DisplayMemberPath="Name"
+          SelectedValuePath="Id"
+          IsEditable="True"
+          IsTextSearchEnabled="True"
+          StaysOpenOnEdit="True"/>
+
+                <TextBlock Text="Количество"
+                           FontWeight="SemiBold"/>
+
+                <TextBox x:Name="QuantityTextBox"
+                         Height="35"
+                         Margin="0,5,0,15"
+                         Style="{StaticResource ModernTextBoxStyle}"/>
+
+                <TextBlock Text="Причина списания"
+                           FontWeight="SemiBold"/>
+
+                <ComboBox x:Name="ReasonComboBox"
+                          Height="35"
+                          Margin="0,5,0,0">
+
+                    <ComboBoxItem Content="Просрочка"/>
+                    <ComboBoxItem Content="Брак"/>
+                    <ComboBoxItem Content="Повреждение"/>
+
+                </ComboBox>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button Content="Отмена"
+                    Width="130"
+                    Height="35"
+                    Margin="0,0,10,0"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Click="CancelButton_Click"/>
+
+            <Button Content="Сохранить"
+                    Width="130"
+                    Height="35"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="SaveButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

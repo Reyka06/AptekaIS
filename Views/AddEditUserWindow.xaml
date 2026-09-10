@@ -1,0 +1,109 @@
+﻿<Window x:Class="AptekaIS.Views.AddEditUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Пользователь"
+        Height="500"
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- TITLE -->
+        <TextBlock Grid.Row="0"
+                   Text="Информация о пользователе"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   Margin="0,0,0,20"/>
+
+        <!-- CONTENT -->
+        <Border Grid.Row="1"
+                Style="{StaticResource InputBorderStyle}"
+                Padding="15">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Логин -->
+                <TextBlock Text="Логин" FontWeight="SemiBold"/>
+                <TextBox Grid.Row="1"
+                         x:Name="LoginTextBox"
+                         Height="35"
+                         Style="{StaticResource ModernTextBoxStyle}"
+                         Margin="0,5,0,10"/>
+
+                <!-- Пароль -->
+                <TextBlock Grid.Row="2"
+                           Text="Пароль"
+                           FontWeight="SemiBold"/>
+                <TextBox Grid.Row="3"
+                         x:Name="PasswordTextBox"
+                         Height="35"
+                         Style="{StaticResource ModernTextBoxStyle}"
+                         Margin="0,5,0,10"/>
+
+                <!-- ФИО -->
+                <TextBlock Grid.Row="4"
+                           Text="ФИО"
+                           FontWeight="SemiBold"/>
+                <TextBox Grid.Row="5"
+                         x:Name="FullNameTextBox"
+                         Height="35"
+                         Style="{StaticResource ModernTextBoxStyle}"
+                         Margin="0,5,0,10"/>
+
+                <!-- Роль -->
+                <TextBlock Grid.Row="6"
+                           Text="Роль"
+                           FontWeight="SemiBold"/>
+                <ComboBox Grid.Row="7"
+                          x:Name="RoleComboBox"
+                          Height="35"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"
+                          Margin="0,5,0,0"/>
+
+            </Grid>
+
+        </Border>
+
+        <!-- BUTTONS -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button Content="Отмена"
+                    Width="120"
+                    Height="35"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Margin="0,0,10,0"
+                    Click="CancelButton_Click"/>
+
+            <Button Content="Сохранить"
+                    Width="120"
+                    Height="35"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="SaveButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,72 @@
+﻿<Window x:Class="AptekaIS.Views.PaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Оплата"
+        Width="420"
+        Height="350"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundColor}">
+
+    <Border Margin="15"
+            Background="White"
+            CornerRadius="12"
+            BorderBrush="#D0D5DA"
+            BorderThickness="1">
+
+        <Grid Margin="25">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок -->
+
+            <StackPanel Grid.Row="0">
+
+                <TextBlock Text="Оформление продажи"
+                           Style="{StaticResource TitleStyle}"
+                           FontSize="22"
+                           Margin="0,0,0,5"/>
+
+                <TextBlock Text="Выберите способ оплаты"
+                           Style="{StaticResource SubtitleStyle}"
+                           Margin="0,0,0,20"/>
+
+            </StackPanel>
+
+            <!-- Кнопки оплаты -->
+
+            <StackPanel Grid.Row="1"
+            VerticalAlignment="Center">
+
+                <Button Content="Наличные"
+            Margin="0,0,0,12"
+            FontSize="15"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Click="CashButton_Click"/>
+
+                <Button Content="Банковская карта"
+            FontSize="15"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Click="CardButton_Click"/>
+
+            </StackPanel>
+
+            <!-- Отмена -->
+
+            <Button Grid.Row="2"
+                    Content="Отмена"
+                    Width="120"
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource DangerButtonStyle}"
+                    Click="CancelButton_Click"/>
+
+        </Grid>
+
+    </Border>
+
+</Window>

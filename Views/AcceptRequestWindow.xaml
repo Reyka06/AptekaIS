@@ -1,0 +1,193 @@
+﻿<Window x:Class="AptekaIS.Views.AcceptRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Приёмка товара"
+        Height="500"
+        Width="750"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Приёмка товара по заявке"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   Margin="0,0,0,15"/>
+
+        <!-- Информация -->
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,15">
+
+            <TextBlock Text="Заявка №:"
+                       Margin="0,0,8,0"/>
+
+            <TextBlock x:Name="RequestNumberText"
+                       FontWeight="Bold"
+                       Margin="0,0,20,0"/>
+
+            <TextBlock Text="Поставщик:"
+                       Margin="0,0,8,0"/>
+
+            <TextBlock x:Name="SupplierNameText"
+                       FontWeight="Bold"/>
+
+        </StackPanel>
+
+        <!-- Список товаров -->
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="10">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Шапка -->
+                <Grid Grid.Row="0"
+                      Margin="0,0,0,8">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
+                               Text="Товар"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="1"
+                               Text="Заказано"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="2"
+                               Text="Принято"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="3"
+                               Text="Сейчас пришло"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                </Grid>
+
+                <!-- Список -->
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto">
+
+                    <ItemsControl x:Name="ItemsControlProducts">
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Border BorderBrush="#E6E6E6"
+                                        BorderThickness="0,0,0,1"
+                                        Padding="10">
+
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Товар -->
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding ProductName}"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center"/>
+
+                                        <!-- Заказано -->
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding RequestedQuantity}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+
+                                        <!-- Уже принято -->
+                                        <TextBlock Grid.Column="2"
+                                                   Text="{Binding AlreadyAccepted}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="DarkGreen"/>
+
+                                        <!-- Сейчас пришло -->
+                                        <Border Grid.Column="3"
+                                                BorderBrush="#CFCFCF"
+                                                BorderThickness="1"
+                                                CornerRadius="4"
+                                                Width="80"
+                                                Height="32"
+                                                HorizontalAlignment="Center">
+
+                                            <TextBox Text="{Binding ActualQuantity, UpdateSourceTrigger=PropertyChanged}"
+                                                     BorderThickness="0"
+                                                     Background="Transparent"
+                                                     FontSize="14"
+                                                     FontWeight="SemiBold"
+                                                     TextAlignment="Center"
+                                                     VerticalContentAlignment="Center"
+                                                     Padding="0"/>
+
+                                        </Border>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                </ScrollViewer>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,0,0">
+
+            <Button Content="Отмена"
+                    Width="110"
+                    Margin="0,0,10,0"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Click="CancelButton_Click"/>
+
+            <Button Content="Провести приход"
+                    Width="170"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Foreground="White"
+                    Click="AcceptButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

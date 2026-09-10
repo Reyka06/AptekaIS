@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="AptekaIS.Views.UserControls.ProductsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:AptekaIS.Converters">
+
+    <UserControl.Resources>
+        <converters:ByteArrayToImageConverters x:Key="ByteArrayToImageConverter"/>
+    </UserControl.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- SEARCH -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="8"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                Padding="5"
+                Margin="0,0,0,10">
+
+            <TextBox x:Name="SearchTextBox"
+                     Height="35"
+                     BorderThickness="0"
+                     FontSize="14"
+                     VerticalContentAlignment="Center"
+                     TextChanged="SearchTextBox_TextChanged"
+                     Style="{StaticResource ModernTextBoxStyle}"/>
+        </Border>
+
+        <!-- FILTERS -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <ComboBox x:Name="MainCategoryFilterComboBox"
+                      Width="220"
+                      Height="35"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectionChanged="MainCategoryFilter_Changed"
+                      Margin="0,0,10,0"/>
+
+            <ComboBox x:Name="SubCategoryFilterComboBox"
+                      Width="220"
+                      Height="35"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectionChanged="SubCategoryFilter_Changed"/>
+        </StackPanel>
+
+        <!-- BUTTONS -->
+        <WrapPanel Grid.Row="3" Margin="0,0,0,10">
+            <Button x:Name="AddButton"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Content="Добавить"
+                    Width="150"
+                    Margin="0,0,10,10"
+                    Click="AddButton_Click"/>
+
+            <Button x:Name="EditButton" 
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Content="Редактировать"
+                    Width="150"
+                    Margin="0,0,10,10"
+                    Click="EditButton_Click"/>
+
+            <Button x:Name="DeleteButton"
+                    Style="{StaticResource DangerButtonStyle}"
+                    Content="Удалить"
+                    Width="150"
+                    Margin="0,0,10,10"
+                    Click="DeleteButton_Click"/>
+        </WrapPanel>
+
+        <!-- TABLE -->
+        <DataGrid x:Name="ProductsGrid"
+                  Grid.Row="4"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  RowHeight="55"
+                  FontSize="13"
+                  AlternationCount="2"
+                  BorderBrush="#E2E6EA"
+                  BorderThickness="1"
+                  GridLinesVisibility="Vertical"
+                  VerticalGridLinesBrush="#D0D5DA"
+                  HeadersVisibility="Column"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserResizeRows="False"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+            <DataGrid.Columns>
+                <!-- Фото -->
+                <DataGridTemplateColumn Header="Фото" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding MainImage, Converter={StaticResource ByteArrayToImageConverter}}" 
+                                   Width="40" Height="40" 
+                                   Stretch="Uniform"
+                                   Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding SubCategories.MainCategories.Name}" Width="140"/>
+                <DataGridTextColumn Header="Подкатегория" Binding="{Binding SubCategories.Name}" Width="140"/>
+                <DataGridTextColumn Header="Производитель" Binding="{Binding Manufacturers.Name}" Width="150"/>
+                <DataGridTextColumn Header="Форма" Binding="{Binding ProductForms.Name}" Width="110"/>
+                <DataGridTextColumn Header="Упаковка" Binding="{Binding PackageTypes.Name}" Width="110"/>
+                <DataGridTextColumn Header="Дозировка" Binding="{Binding Dosage}" Width="100"/>
+                <DataGridTextColumn Header="Объём" Binding="{Binding Volume}" Width="80"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:F2} ₽}" Width="90"/>
+                <DataGridTextColumn Header="Срок годности" Binding="{Binding ExpiryDate, StringFormat=dd.MM.yyyy}" Width="110"/>
+                <DataGridCheckBoxColumn Header="Рецептурный" Binding="{Binding PrescriptionRequired}" Width="90"/>
+                <DataGridTextColumn Header="Остаток" Binding="{Binding Quantity}" Width="80"/>
+                <DataGridTextColumn Header="Вещество" Binding="{Binding Substance}" Width="150"/>
+                <DataGridTextColumn Header="Спец. свойства" Binding="{Binding SpecialPropertiesList}" Width="200"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="300"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
