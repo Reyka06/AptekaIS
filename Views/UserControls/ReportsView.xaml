@@ -19,16 +19,11 @@
                       Width="250"
                       Height="35"
                       Margin="0,0,10,0">
-
                 <ComboBoxItem Content="Продажи"
                               IsSelected="True"/>
-
                 <ComboBoxItem Content="Приход товаров"/>
-
                 <ComboBoxItem Content="Списания"/>
-
                 <ComboBoxItem Content="Заявки"/>
-
             </ComboBox>
 
             <DatePicker x:Name="DateFrom"
@@ -40,20 +35,17 @@
                         Width="150"
                         Height="35"
                         Margin="0,0,10,0"/>
-            <Button Content="Сформировать"
-        Width="140"
-        Height="35"
-        Margin="0,0,10,0"
-        Style="{StaticResource PrimaryButtonStyle}"
-        Foreground="White"
-        Click="GenerateReport_Click"/>
-
-            <Button Content="Экспорт в Excel"
-        Width="150"
-        Height="35"
-        Style="{StaticResource SecondaryButtonStyle}"
-        Click="ExportExcel_Click"/>
-
+            <Button Content="Сформировать"        
+                    Width="140"        
+                    Height="35"       
+                    Margin="0,0,10,0"       
+                    Style="{StaticResource PrimaryButtonStyle}"           
+                    Click="GenerateReport_Click"/>
+            <Button Content="Экспорт в Excel"       
+                    Width="150"       
+                    Height="35"       
+                    Style="{StaticResource SecondaryButtonStyle}"        
+                    Click="ExportExcel_Click"/>
         </StackPanel>
 
         <!-- Таблица отчёта -->
@@ -68,7 +60,5 @@
                   FontSize="13"
                   AlternatingRowBackground="#F8F9FA"
                   HeadersVisibility="Column"/>
-
     </Grid>
-
 </UserControl>

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Globalization; // Для CultureInfo
-using System.IO; // Для MemoryStream
-using System.Windows.Data; // Для IValueConverter
-using System.Windows.Media.Imaging; // Для BitmapImage, BitmapCacheOption
+using System.Globalization;
+using System.IO;
+using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace AptekaIS.Converters
 {
@@ -35,7 +30,7 @@ namespace AptekaIS.Converters
             return null;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

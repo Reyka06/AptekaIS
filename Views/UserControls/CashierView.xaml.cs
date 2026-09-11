@@ -9,7 +9,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-
 namespace AptekaIS.Views.UserControls
 {
     public partial class CashierView : UserControl
@@ -42,10 +41,10 @@ namespace AptekaIS.Views.UserControls
             var categories = db.MainCategories.ToList();
             categories.Insert(0, new MainCategories { Id = 0, Name = "Все категории" });
             CategoryFilterComboBox.ItemsSource = categories;
-            CategoryFilterComboBox.SelectedIndex = 0; // <-- Добавлено
+            CategoryFilterComboBox.SelectedIndex = 0;
 
             SubCategoryFilterComboBox.ItemsSource = new[] { new SubCategories { Id = 0, Name = "Все подкатегории" } };
-            SubCategoryFilterComboBox.SelectedIndex = 0; // <-- Добавлено
+            SubCategoryFilterComboBox.SelectedIndex = 0;
         }
 
         private void LoadProducts()
@@ -299,6 +298,7 @@ namespace AptekaIS.Views.UserControls
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
+
         private void CreatePdfReceipt(Sales sale, List<ReceiptItem> items)
         {
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -336,7 +336,6 @@ namespace AptekaIS.Views.UserControls
 
                 Font titleFont = new Font(bf, 16, Font.BOLD);
                 Font textFont = new Font(bf, 11);
-                Font smallFont = new Font(bf, 9);
 
                 doc.Add(new Paragraph("КАССОВЫЙ ЧЕК", titleFont));
                 doc.Add(new Paragraph($"Дата: {sale.SaleDate:dd.MM.yyyy HH:mm:ss}", textFont));
@@ -366,7 +365,6 @@ namespace AptekaIS.Views.UserControls
 
                 doc.Add(new Paragraph(" "));
                 doc.Add(new Paragraph($"ИТОГО: {items.Sum(x => x.Sum):F2} ₽", titleFont));
-
                 doc.Add(new Paragraph(" "));
 
                 doc.Close();
@@ -374,8 +372,8 @@ namespace AptekaIS.Views.UserControls
 
             MessageBox.Show("Чек сохранён");
         }
-
     }
+
     public class ReceiptItem
     {
         public string Name { get; set; }
@@ -383,6 +381,7 @@ namespace AptekaIS.Views.UserControls
         public int Quantity { get; set; }
         public decimal Sum { get; set; }
     }
+
     public class ProductDisplayItem
     {
         public int Id { get; set; }

@@ -9,21 +9,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- BUTTONS -->
+        <!-- Кнопки -->
         <WrapPanel Grid.Row="0" Margin="0,0,0,15">
 
             <Button x:Name="NewRequestButton"
-                    Content="➕ Новая заявка"
+                    Content="Новая заявка"
                     Width="150"
                     Margin="0,0,10,10"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Click="NewRequestButton_Click"/>
-            <Button x:Name="ExportRequestsButton"
-        Content="Экспорт Excel"
-        Width="150"
-        Margin="0,0,10,10"
-        Style="{StaticResource SecondaryButtonStyle}"
-        Click="ExportRequestDetails_Click"/>
+            <Button x:Name="ExportRequestsButton"       
+                    Content="Экспорт Excel"       
+                    Width="150"       
+                    Margin="0,0,10,10"     
+                    Style="{StaticResource SecondaryButtonStyle}"      
+                    Click="ExportRequestDetails_Click"/>
 
             <Button x:Name="DeleteRequestButton"
                     Content="Удалить"
@@ -31,10 +31,9 @@
                     Margin="0,0,10,10"
                     Style="{StaticResource DangerButtonStyle}"
                     Click="DeleteRequestButton_Click"/>
-
         </WrapPanel>
 
-        <!-- TABLE (как UsersView) -->
+        <!-- Таблица -->
         <DataGrid x:Name="RequestsGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
@@ -47,31 +46,22 @@
                   AlternatingRowBackground="#F8F9FA">
 
             <DataGrid.Columns>
-
                 <DataGridTextColumn Header="№"
                                     Binding="{Binding Id}"
                                     Width="*"/>
-
                 <DataGridTextColumn Header="Дата заявки"
                                     Binding="{Binding RequestDate, StringFormat='dd.MM.yyyy'}"
                                     Width="2*"/>
-
                 <DataGridTextColumn Header="Поставщик"
                                     Binding="{Binding SupplierName}"
                                     Width="3*"/>
-
                 <DataGridTextColumn Header="Создана"
                                     Binding="{Binding CreatedAt, StringFormat='dd.MM.yyyy HH:mm'}"
                                     Width="2*"/>
-
                 <DataGridTextColumn Header="Создал"
                                     Binding="{Binding CreatedByUserName}"
                                     Width="2*"/>
-
             </DataGrid.Columns>
-
         </DataGrid>
-
     </Grid>
-
 </UserControl>

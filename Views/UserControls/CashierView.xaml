@@ -5,9 +5,8 @@
 
     <UserControl.Resources>
         <converters:ByteArrayToImageConverters x:Key="ByteArrayToImageConverters"/>
-
         <DropShadowEffect x:Key="CardShadow" BlurRadius="6" ShadowDepth="1" Opacity="0.08"/>
-
+        
         <!-- Стиль для кнопки "В корзину" -->
         <Style x:Key="CartButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
             <Setter Property="Width" Value="110"/>
@@ -33,88 +32,85 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Поиск товаров" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" Margin="0,0,0,10"/>
+            <TextBlock Grid.Row="0" 
+                       Text="Поиск товаров" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       Foreground="{StaticResource PrimaryColor}" 
+                       Margin="0,0,0,10"/>
 
             <!-- Поиск -->
-            <TextBox Grid.Row="1"
-         x:Name="SearchTextBox"
-         Height="38"
-         Margin="0,0,0,10"
-         TextChanged="SearchTextBox_TextChanged"
-         Background="White"
-         BorderBrush="#D0D5DA"
-         BorderThickness="1"
-         VerticalContentAlignment="Center"
-         Padding="10,0" Style="{StaticResource ModernTextBoxStyle}"/>
+            <TextBox Grid.Row="1" 
+                     x:Name="SearchTextBox" 
+                     Height="38" 
+                     Margin="0,0,0,10" 
+                     TextChanged="SearchTextBox_TextChanged" 
+                     Background="White"
+                     BorderBrush="#D0D5DA"         
+                     BorderThickness="1"        
+                     VerticalContentAlignment="Center"       
+                     Padding="10,0" 
+                     Style="{StaticResource ModernTextBoxStyle}"/>
 
             <!-- Фильтры -->
-            <StackPanel Grid.Row="2"
-            Orientation="Horizontal"
-            Margin="0,0,0,10">
-
-                <ComboBox x:Name="CategoryFilterComboBox"
-              Width="150"
-              Height="36"
-              Margin="0,0,10,0"
-              DisplayMemberPath="Name"
-              SelectedValuePath="Id"
-              SelectionChanged="CategoryFilter_Changed"/>
-
-                <ComboBox x:Name="SubCategoryFilterComboBox"
-              Width="150"
-              Height="36"
-              DisplayMemberPath="Name"
-              SelectedValuePath="Id"
-              SelectionChanged="SubCategoryFilter_Changed"/>
-
+            <StackPanel Grid.Row="2"           
+                        Orientation="Horizontal"            
+                        Margin="0,0,0,10">
+                <ComboBox x:Name="CategoryFilterComboBox"              
+                          Width="150"              
+                          Height="36"             
+                          Margin="0,0,10,0"              
+                          DisplayMemberPath="Name"             
+                          SelectedValuePath="Id"              
+                          SelectionChanged="CategoryFilter_Changed"/>
+                <ComboBox x:Name="SubCategoryFilterComboBox"             
+                          Width="150"              
+                          Height="36"              
+                          DisplayMemberPath="Name"             
+                          SelectedValuePath="Id"             
+                          SelectionChanged="SubCategoryFilter_Changed"/>
             </StackPanel>
 
             <!-- Фильтр по цене -->
-            <StackPanel Grid.Row="3"
-            Orientation="Horizontal"
-            Margin="0,0,0,10">
-
+            <StackPanel Grid.Row="3"                                              
+                        Orientation="Horizontal"            
+                        Margin="0,0,0,10">
                 <StackPanel Margin="0,0,10,0">
-
-                    <TextBlock Text="Цена от"
-                   FontSize="11"
-                   Foreground="#6C757D"
-                   Margin="2,0,0,4"/>
-
-                    <TextBox x:Name="PriceFromTextBox"
-                 Width="150"
-                 Height="36"
-                 TextChanged="PriceFromTextBox_TextChanged"
-                 VerticalContentAlignment="Center"
-                 Padding="10,0"
-                 Background="White"
-                 BorderBrush="#D0D5DA"
-                 BorderThickness="1" Style="{StaticResource ModernTextBoxStyle}"/>
-
+                    <TextBlock Text="Цена от"                  
+                               FontSize="11"                 
+                               Foreground="#6C757D"                  
+                               Margin="2,0,0,4"/>
+                    <TextBox x:Name="PriceFromTextBox"                
+                             Width="150"                
+                             Height="36"                 
+                             TextChanged="PriceFromTextBox_TextChanged"                 
+                             VerticalContentAlignment="Center"                
+                             Padding="10,0"                 
+                             Background="White"                 
+                             BorderBrush="#D0D5DA"                 
+                             BorderThickness="1" 
+                             Style="{StaticResource ModernTextBoxStyle}"/>
                 </StackPanel>
-
+                
                 <StackPanel>
-
-                    <TextBlock Text="Цена до"
-                   FontSize="11"
-                   Foreground="#6C757D"
-                   Margin="2,0,0,4"/>
-
-                    <TextBox x:Name="PriceToTextBox"
-                 Width="150"
-                 Height="36"
-                 TextChanged="PriceToTextBox_TextChanged"
-                 VerticalContentAlignment="Center"
-                 Padding="10,0"
-                 Background="White"
-                 BorderBrush="#D0D5DA"
-                 BorderThickness="1" Style="{StaticResource ModernTextBoxStyle}"/>
-
+                    <TextBlock Text="Цена до"                   
+                               FontSize="11"                  
+                               Foreground="#6C757D"                   
+                               Margin="2,0,0,4"/>
+                    <TextBox x:Name="PriceToTextBox"                 
+                             Width="150"                 
+                             Height="36"                 
+                             TextChanged="PriceToTextBox_TextChanged"                
+                             VerticalContentAlignment="Center"                
+                             Padding="10,0"                 
+                             Background="White"                
+                             BorderBrush="#D0D5DA"                
+                             BorderThickness="1" 
+                             Style="{StaticResource ModernTextBoxStyle}"/>
                 </StackPanel>
-
             </StackPanel>
 
-            <!-- Список товаров (растягивается) -->
+            <!-- Список товаров -->
             <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="ProductsItemsControl">
                     <ItemsControl.ItemTemplate>
@@ -132,20 +128,30 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-
-                                    <Border Width="60" Height="60" Background="#F5F7FA" CornerRadius="8" Margin="0,0,12,0">
+                                    
+                                    <Border Width="60" 
+                                            Height="60" 
+                                            Background="#F5F7FA" 
+                                            CornerRadius="8" 
+                                            Margin="0,0,12,0">
                                         <Image Source="{Binding MainImage, Converter={StaticResource ByteArrayToImageConverters}}" 
                                                Width="50" Height="50" Stretch="Uniform"/>
                                     </Border>
 
                                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13" Margin="0,0,0,3"/>
-                                        <TextBlock Text="{Binding Manufacturers.Name}" FontSize="11" Foreground="#6C757D" Margin="0,0,0,3"/>
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
-                                            <TextBlock Text="{Binding Dosage}" FontSize="11" Foreground="#6C757D"/>
-                                            <TextBlock Text=" " FontSize="11" Foreground="#6C757D"/>
-                                            <TextBlock Text="{Binding Volume}" FontSize="11" Foreground="#6C757D"/>
-                                        </StackPanel>
+                                        <TextBlock Text="{Binding Name}" 
+                                                   FontWeight="SemiBold" 
+                                                   FontSize="13" 
+                                                   Margin="0,0,0,3"/>
+                                        <TextBlock Text="{Binding Manufacturers.Name}" 
+                                                   FontSize="11" 
+                                                   Foreground="#6C757D" 
+                                                   Margin="0,0,0,3"/>
+                                        <TextBlock FontSize="11" Foreground="#6C757D" Margin="0,0,0,2">                                                    
+                                            <Run Text="{Binding Dosage}"/>  
+                                            <Run Text=" "/>                                                 
+                                            <Run Text="{Binding Volume}"/>
+                                        </TextBlock>
                                         <TextBlock FontSize="11" Foreground="#6C757D">
                                             <Run Text="Остаток: "/>
                                             <Run Text="{Binding Quantity}"/>
@@ -153,12 +159,17 @@
                                         </TextBlock>
                                     </StackPanel>
 
-                                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                        <TextBlock FontSize="16" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" HorizontalAlignment="Right">
-                                            <Run Text="{Binding Price, StringFormat={}{0:F2}}"/>
+                                    <StackPanel Grid.Column="2" 
+                                                HorizontalAlignment="Right" 
+                                                VerticalAlignment="Center">
+                                        <TextBlock FontSize="16" 
+                                                   FontWeight="Bold" 
+                                                   Foreground="{StaticResource PrimaryColor}" 
+                                                   HorizontalAlignment="Right">                                            
+                                            <Run Text="{Binding Price, StringFormat={}{0:F2}}"/>                                            
                                             <Run Text=" ₽"/>
                                         </TextBlock>
-                                        <Button Content="➕ В корзину" 
+                                        <Button Content="В корзину" 
                                                 Style="{StaticResource CartButtonStyle}"
                                                 Margin="0,8,0,0"
                                                 Click="AddToCart_Click" 
@@ -181,17 +192,30 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Корзина" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" Margin="0,0,0,15"/>
+            <TextBlock Grid.Row="0" 
+                       Text="Корзина" 
+                       FontSize="18" 
+                       FontWeight="Bold"
+                       Foreground="{StaticResource PrimaryColor}"
+                       Margin="0,0,0,15"/>
 
             <!-- Итого -->
-            <Border Grid.Row="1" Background="#F8FAFC" CornerRadius="12" Padding="15" Margin="0,0,0,15">
+            <Border Grid.Row="1" 
+                    Background="#F8FAFC" 
+                    CornerRadius="12" 
+                    Padding="15" 
+                    Margin="0,0,0,15">
                 <StackPanel>
-                    <TextBlock Text="ИТОГО" FontSize="12" Foreground="#6C757D"/>
-                    <TextBlock x:Name="TotalText" FontSize="28" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" Text="0.00 ₽"/>
+                    <TextBlock Text="Итого" FontSize="12" Foreground="#6C757D"/>
+                    <TextBlock x:Name="TotalText" 
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryColor}"
+                               Text="0.00 ₽"/>
                 </StackPanel>
             </Border>
 
-            <!-- Список корзины (растягивается) -->
+            <!-- Список корзины -->
             <Border Grid.Row="2" 
                     Background="White" 
                     CornerRadius="12" 
@@ -235,14 +259,24 @@
                                             <Run Text=" ₽"/>
                                         </TextBlock>
 
-                                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
-                                            <Button Content="−" Style="{StaticResource QuantityButtonStyle}" Click="Minus_Click" Tag="{Binding}"/>
-                                            <TextBlock Text="{Binding Quantity}" Width="35" TextAlignment="Center" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                                            <Button Content="+" Style="{StaticResource QuantityButtonStyle}" Click="Plus_Click" Tag="{Binding}"/>
+                                        <StackPanel Grid.Column="2" 
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center"
+                                                    Margin="10,0">
+                                            <Button Content="−" 
+                                                    Style="{StaticResource QuantityButtonStyle}" 
+                                                    Click="Minus_Click" Tag="{Binding}"/>
+                                            <TextBlock Text="{Binding Quantity}"
+                                                       Width="35" TextAlignment="Center"
+                                                       FontWeight="SemiBold" 
+                                                       VerticalAlignment="Center"/>
+                                            <Button Content="+" 
+                                                    Style="{StaticResource QuantityButtonStyle}"
+                                                    Click="Plus_Click" Tag="{Binding}"/>
                                         </StackPanel>
 
                                         <Button Grid.Column="3" 
-                                                Content="✕" 
+                                                Content="×" 
                                                 Width="30" 
                                                 Height="30" 
                                                 Margin="10,0,0,0"
@@ -259,7 +293,7 @@
 
             <!-- Кнопка оплаты -->
             <Button Grid.Row="3" 
-                    Content="ОПЛАТИТЬ" 
+                    Content="Оплатить" 
                     Height="55" 
                     FontSize="16" 
                     FontWeight="Bold"

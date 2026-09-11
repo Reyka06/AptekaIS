@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace AptekaIS.Views
@@ -29,7 +19,7 @@ namespace AptekaIS.Views
                 UserInfoText.Text = $"{App.currentUser.FullName} — {roleName}";
             }
 
-            // 👇 ДОБАВЛЯЕМ ОГРАНИЧЕНИЯ ПО РОЛЯМ
+            // Добавляем ограничение по ролям
             SetPermissionsByRole();
 
             timer = new DispatcherTimer();
@@ -40,7 +30,7 @@ namespace AptekaIS.Views
             UpdateDateTime();
         }
 
-        // 👇 НОВЫЙ МЕТОД ДЛЯ ОГРАНИЧЕНИЙ
+        // Новый метод для ограничений
         private void SetPermissionsByRole()
         {
             string roleName = App.currentUser?.Roles?.Name;
@@ -49,37 +39,14 @@ namespace AptekaIS.Views
             if (roleName == "Заведующий")
             {
                 ShowAllTabs();
-                return;
             }
 
             // Фармацевт - ограниченный доступ
             if (roleName == "Фармацевт")
             {
-                // Скрываем запрещенные вкладки
                 TabUsers.Visibility = Visibility.Collapsed;
                 TabSuppliers.Visibility = Visibility.Collapsed;
                 TabReports.Visibility = Visibility.Collapsed;
-
-                // Оставляем видимыми:
-                // TabCashier - Касса
-                // TabReceipt - Приход
-                // TabProducts - Товары
-                return;
-            }
-
-            // Если роль неизвестна - только касса
-            HideAllTabs();
-            TabCashier.Visibility = Visibility.Visible;
-        }
-
-        private void HideAllTabs()
-        {
-            foreach (var item in MainTabControl.Items)
-            {
-                if (item is TabItem tab)
-                {
-                    tab.Visibility = Visibility.Collapsed;
-                }
             }
         }
 

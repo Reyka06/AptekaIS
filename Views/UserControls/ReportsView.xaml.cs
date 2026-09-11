@@ -1,20 +1,10 @@
 ﻿using AptekaIS.Models;
+using ClosedXML.Excel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ClosedXML.Excel;
-using System.IO;
 
 namespace AptekaIS.Views.UserControls
 {
@@ -27,10 +17,11 @@ namespace AptekaIS.Views.UserControls
             InitializeComponent();
             db = new AptekaISDbEntities();
 
-            // Устанавливаем даты по умолчанию (чтобы не было null)
+            // Устанавливаем даты по умолчанию
             DateFrom.SelectedDate = DateTime.Now.AddMonths(-1);
             DateTo.SelectedDate = DateTime.Now;
         }
+
         private void ExportExcel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -41,7 +32,6 @@ namespace AptekaIS.Views.UserControls
                     return;
                 }
 
-                // 📁 Рабочий стол\Аптека\Чеки\Отчеты
                 string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                 string folder = System.IO.Path.Combine(
@@ -59,11 +49,11 @@ namespace AptekaIS.Views.UserControls
                     folder,
                     $"Отчет_{reportName}_{DateTime.Now:yyyy-MM-dd_HH-mm}.xlsx");
 
-                using (var wb = new ClosedXML.Excel.XLWorkbook())
+                using (var wb = new XLWorkbook())
                 {
                     var ws = wb.Worksheets.Add("Отчет");
 
-                    // 📌 заголовки
+                    // Заголовки
                     for (int i = 0; i < ReportGrid.Columns.Count; i++)
                     {
                         ws.Cell(1, i + 1).Value = ReportGrid.Columns[i].Header?.ToString();
@@ -105,6 +95,7 @@ namespace AptekaIS.Views.UserControls
                 MessageBox.Show("Ошибка экспорта: " + ex.Message);
             }
         }
+
         private void GenerateReport_Click(object sender, RoutedEventArgs e)
         {
             // Проверка выбора дат

@@ -1,24 +1,10 @@
-﻿using AptekaIS.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AptekaIS.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()
@@ -27,11 +13,11 @@ namespace AptekaIS.Views
             try
             {
                 App.DBApteka = new Models.AptekaISDbEntities();
-                //MessageBox.Show("Ok");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //MessageBox.Show("Not");
+                MessageBox.Show("Не удалось подключиться к базе данных:\n" + ex.Message,"Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+                Application.Current.Shutdown();
             }
         }
 
@@ -64,7 +50,7 @@ namespace AptekaIS.Views
             else
             {
                 MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-         }
+            }
         }
     }
 }

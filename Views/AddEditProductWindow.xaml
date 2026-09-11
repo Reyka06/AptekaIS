@@ -10,27 +10,25 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
         <Grid Margin="25">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- TITLE -->
+            <!-- Заголовок -->
             <TextBlock Text="Информация о товаре"
                        FontSize="24"
                        FontWeight="Bold"
                        Margin="0,0,0,15"/>
 
-            <!-- TOP -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- LEFT -->
+                <!-- Левая часть -->
                 <Border Style="{StaticResource InputBorderStyle}" Padding="15" Margin="0,0,10,0">
                     <StackPanel>
 
@@ -73,7 +71,6 @@
                                   DisplayMemberPath="Name"
                                   SelectedValuePath="Id"/>
 
-                        <!-- FIX CHECKBOX -->
                         <Border Margin="0,12,0,0"
                                 Padding="10"
                                 Background="#F8FAFC"
@@ -83,20 +80,17 @@
                                       Content="Рецептурный товар"
                                       FontWeight="SemiBold"
                                       VerticalAlignment="Center"/>
-
                         </Border>
-
                     </StackPanel>
                 </Border>
 
-                <!-- RIGHT -->
+                <!-- Правая часть -->
                 <Border Grid.Column="1"
                         Style="{StaticResource InputBorderStyle}"
                         Padding="15"
                         Margin="10,0,0,0">
 
                     <StackPanel>
-
                         <TextBlock Text="Характеристики"
                                    FontWeight="SemiBold"
                                    Margin="0,0,0,10"/>
@@ -123,14 +117,10 @@
 
                         <TextBlock Text="Срок годности"/>
                         <DatePicker x:Name="ExpiryDatePicker" Height="35"/>
-
                     </StackPanel>
-
                 </Border>
-
             </Grid>
 
-            <!-- BOTTOM -->
             <Border Grid.Row="2"
                     Style="{StaticResource InputBorderStyle}"
                     Margin="0,15,0,0"
@@ -138,13 +128,11 @@
 
                 <StackPanel>
 
-                    <!-- IMAGE (СТРОКА, НЕ БЛОК) -->
-                    <TextBlock Text="Изображение товара"
-           FontWeight="SemiBold"
-           Margin="0,0,0,10"/>
+                    <TextBlock Text="Изображение товара"           
+                               FontWeight="SemiBold"        
+                               Margin="0,0,0,10"/>
 
-                    <Border Style="{StaticResource InputBorderStyle}"
-        Padding="8">
+                    <Border Style="{StaticResource InputBorderStyle}" Padding="8">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -152,25 +140,23 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBox x:Name="ImageFileNameTextBox"
-                 Height="32"
-                 Margin="0"
-                 Padding="8,0"
-                 VerticalContentAlignment="Center"
-                 IsReadOnly="True"/>
+                            <TextBox x:Name="ImageFileNameTextBox"               
+                                     Height="32"                
+                                     Margin="0"               
+                                     Padding="8,0"               
+                                     VerticalContentAlignment="Center"               
+                                     IsReadOnly="True"/>
 
-                            <Button Content="Выбрать"
-                Grid.Column="1"
-                Width="120"
-                Height="32"
-                Margin="8,0,0,0"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Click="SelectImageButton_Click"/>
+                            <Button Content="Выбрать"                
+                                    Grid.Column="1"              
+                                    Width="120"                
+                                    Height="32"                
+                                    Margin="8,0,0,0"               
+                                    Style="{StaticResource PrimaryButtonStyle}"               
+                                    Click="SelectImageButton_Click"/>
                         </Grid>
 
                     </Border>
-
-                    <!-- SPECIAL PROPERTIES (ОГРАНИЧЕННЫЙ БЛОК) -->
                     <TextBlock Text="Специальные свойства"
                                Margin="0,12,0,5"
                                FontWeight="SemiBold"/>
@@ -195,12 +181,9 @@
                                               Margin="10,5"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-
                         </ItemsControl>
-
                     </Border>
 
-                    <!-- DESCRIPTION -->
                     <TextBlock Text="Описание"
                                Margin="0,12,0,5"
                                FontWeight="SemiBold"/>
@@ -211,7 +194,6 @@
                              TextWrapping="Wrap"
                              Style="{StaticResource ModernTextBoxStyle}"/>
 
-                    <!-- BUTTONS -->
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right"
                                 Margin="0,15,0,0">
@@ -222,19 +204,13 @@
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Click="SaveButton_Click"/>
 
-                        <Button Content="Отмена"
-        Width="150"
-        Style="{StaticResource SecondaryButtonStyle}"
-        Click="CancelButton_Click"/>
-
+                        <Button Content="Отмена"      
+                                Width="150"      
+                                Style="{StaticResource SecondaryButtonStyle}"       
+                                Click="CancelButton_Click"/>
                     </StackPanel>
-
                 </StackPanel>
-
             </Border>
-
         </Grid>
-
     </ScrollViewer>
-
 </Window>

@@ -1,20 +1,9 @@
 ﻿using AptekaIS.Models;
 using ClosedXML.Excel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace AptekaIS.Views.UserControls
 {
@@ -29,6 +18,7 @@ namespace AptekaIS.Views.UserControls
             LoadRequests();
             SetPermissions();
         }
+
         private void SetPermissions()
         {
             string roleName = App.currentUser?.Roles?.Name;
@@ -37,7 +27,6 @@ namespace AptekaIS.Views.UserControls
             if (roleName == "Заведующий")
             {
                 ShowAllButtons();
-                return;
             }
 
             // Фармацевт - скрываем кнопки Экспорт и Удалить
@@ -45,10 +34,7 @@ namespace AptekaIS.Views.UserControls
             {
                 ExportRequestsButton.Visibility = Visibility.Collapsed;
                 DeleteRequestButton.Visibility = Visibility.Collapsed;
-
-                return;
             }
-
         }
 
         private void ShowAllButtons()
@@ -58,7 +44,6 @@ namespace AptekaIS.Views.UserControls
             DeleteRequestButton.Visibility = Visibility.Visible;
         }
 
-        // ✔ НОРМАЛЬНАЯ МОДЕЛЬ ДЛЯ GRID
         private class RequestRow
         {
             public int Id { get; set; }
@@ -67,6 +52,7 @@ namespace AptekaIS.Views.UserControls
             public DateTime CreatedAt { get; set; }
             public string CreatedByUserName { get; set; }
         }
+
         private void ExportRequestDetails_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -79,7 +65,7 @@ namespace AptekaIS.Views.UserControls
                     return;
                 }
 
-                // получаем полные данные заявки
+                // Получаем данные заявки
                 var request = db.Requests
                     .Include("Suppliers")
                     .Include("RequestItems.Products")
@@ -92,7 +78,6 @@ namespace AptekaIS.Views.UserControls
                 }
 
                 string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
                 string folder = System.IO.Path.Combine(
                     desktop,
                     "Аптека",
@@ -108,22 +93,19 @@ namespace AptekaIS.Views.UserControls
                 {
                     var ws = wb.Worksheets.Add("Заявка");
 
-                    // 📌 ШАПКА
+                    // Шапка
                     ws.Cell(1, 1).Value = "Заявка №";
                     ws.Cell(1, 2).Value = request.Id;
-
                     ws.Cell(2, 1).Value = "Поставщик";
                     ws.Cell(2, 2).Value = request.Suppliers?.Name;
-
                     ws.Cell(3, 1).Value = "Дата";
                     ws.Cell(3, 2).Value = request.RequestDate.ToString("dd.MM.yyyy");
 
-                    // 📌 ТАБЛИЦА ТОВАРОВ
+                    // Таблица товаров
                     int row = 5;
 
                     ws.Cell(row, 1).Value = "Товар";
                     ws.Cell(row, 2).Value = "Количество";
-
                     ws.Range(row, 1, row, 2).Style.Font.Bold = true;
                     row++;
 
@@ -135,7 +117,6 @@ namespace AptekaIS.Views.UserControls
                     }
 
                     ws.Columns().AdjustToContents();
-
                     wb.SaveAs(filePath);
                 }
 
@@ -146,6 +127,7 @@ namespace AptekaIS.Views.UserControls
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
+
         private void LoadRequests()
         {
             var query = db.Requests
@@ -210,7 +192,7 @@ namespace AptekaIS.Views.UserControls
                 if (request == null)
                     return;
 
-                // 🔥 удаляем зависимые Receipts
+                // Удаляем зависимые Receipts
                 var receipts = db.Receipts
                     .Where(r => r.RequestId == request.Id)
                     .ToList();
@@ -218,11 +200,9 @@ namespace AptekaIS.Views.UserControls
                 if (receipts.Any())
                     db.Receipts.RemoveRange(receipts);
 
-                // 🔥 удаляем заявку
+                // Удаляем заявку
                 db.Requests.Remove(request);
-
                 db.SaveChanges();
-
                 LoadRequests();
             }
             catch (Exception ex)

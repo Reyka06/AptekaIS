@@ -28,29 +28,24 @@
                 Padding="15">
 
             <StackPanel>
+                <TextBlock Text="Товар" FontWeight="SemiBold"/>
+                <ComboBox x:Name="ProductComboBox"          
+                          Height="35"        
+                          Margin="0,5,0,15"   
+                          DisplayMemberPath="Name"        
+                          SelectedValuePath="Id"      
+                          IsEditable="True"        
+                          IsTextSearchEnabled="True"       
+                          StaysOpenOnEdit="True"/>
 
-                <TextBlock Text="Товар"
-                           FontWeight="SemiBold"/>
-
-                <ComboBox x:Name="ProductComboBox"
-          Height="35"
-          Margin="0,5,0,15"
-          DisplayMemberPath="Name"
-          SelectedValuePath="Id"
-          IsEditable="True"
-          IsTextSearchEnabled="True"
-          StaysOpenOnEdit="True"/>
-
-                <TextBlock Text="Количество"
-                           FontWeight="SemiBold"/>
+                <TextBlock Text="Количество" FontWeight="SemiBold"/>
 
                 <TextBox x:Name="QuantityTextBox"
                          Height="35"
                          Margin="0,5,0,15"
                          Style="{StaticResource ModernTextBoxStyle}"/>
 
-                <TextBlock Text="Причина списания"
-                           FontWeight="SemiBold"/>
+                <TextBlock Text="Причина списания" FontWeight="SemiBold"/>
 
                 <ComboBox x:Name="ReasonComboBox"
                           Height="35"
@@ -59,11 +54,8 @@
                     <ComboBoxItem Content="Просрочка"/>
                     <ComboBoxItem Content="Брак"/>
                     <ComboBoxItem Content="Повреждение"/>
-
                 </ComboBox>
-
             </StackPanel>
-
         </Border>
 
         <!-- Кнопки -->
@@ -84,9 +76,6 @@
                     Height="35"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Click="SaveButton_Click"/>
-
         </StackPanel>
-
     </Grid>
-
 </Window>

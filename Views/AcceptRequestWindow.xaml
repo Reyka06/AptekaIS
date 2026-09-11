@@ -27,20 +27,15 @@
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     Margin="0,0,0,15">
-
             <TextBlock Text="Заявка №:"
                        Margin="0,0,8,0"/>
-
             <TextBlock x:Name="RequestNumberText"
                        FontWeight="Bold"
                        Margin="0,0,20,0"/>
-
             <TextBlock Text="Поставщик:"
                        Margin="0,0,8,0"/>
-
             <TextBlock x:Name="SupplierNameText"
                        FontWeight="Bold"/>
-
         </StackPanel>
 
         <!-- Список товаров -->
@@ -52,7 +47,6 @@
                 Padding="10">
 
             <Grid>
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -61,7 +55,6 @@
                 <!-- Шапка -->
                 <Grid Grid.Row="0"
                       Margin="0,0,0,8">
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1.5*"/>
@@ -72,17 +65,14 @@
                     <TextBlock Grid.Column="0"
                                Text="Товар"
                                FontWeight="Bold"/>
-
                     <TextBlock Grid.Column="1"
                                Text="Заказано"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"/>
-
                     <TextBlock Grid.Column="2"
                                Text="Принято"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"/>
-
                     <TextBlock Grid.Column="3"
                                Text="Сейчас пришло"
                                FontWeight="Bold"
@@ -90,21 +80,15 @@
                 </Grid>
 
                 <!-- Список -->
-                <ScrollViewer Grid.Row="1"
-                              VerticalScrollBarVisibility="Auto">
-
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl x:Name="ItemsControlProducts">
-
                         <ItemsControl.ItemTemplate>
-
                             <DataTemplate>
-
                                 <Border BorderBrush="#E6E6E6"
                                         BorderThickness="0,0,0,1"
                                         Padding="10">
 
                                     <Grid>
-
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="1.5*"/>
@@ -151,21 +135,13 @@
                                                      Padding="0"/>
 
                                         </Border>
-
                                     </Grid>
-
                                 </Border>
-
                             </DataTemplate>
-
                         </ItemsControl.ItemTemplate>
-
                     </ItemsControl>
-
                 </ScrollViewer>
-
             </Grid>
-
         </Border>
 
         <!-- Кнопки -->
@@ -187,7 +163,5 @@
                     Click="AcceptButton_Click"/>
 
         </StackPanel>
-
     </Grid>
-
 </Window>

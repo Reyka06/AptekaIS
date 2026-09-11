@@ -33,9 +33,12 @@
         </WrapPanel>
 
         <!-- Таблица -->
-        <DataGrid x:Name="UsersGrid"
-                  Grid.Row="1"
-                  AutoGenerateColumns="False"
+        <DataGrid x:Name="UsersGrid"         
+                  Grid.Row="1"         
+                  AutoGenerateColumns="False"         
+                  IsReadOnly="True"          
+                  SelectionMode="Single"          
+                  SelectionUnit="FullRow"          
                   BorderThickness="0">
 
             <DataGrid.Columns>

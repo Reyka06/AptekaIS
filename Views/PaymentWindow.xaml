@@ -23,7 +23,6 @@
             </Grid.RowDefinitions>
 
             <!-- Заголовок -->
-
             <StackPanel Grid.Row="0">
 
                 <TextBlock Text="Оформление продажи"
@@ -34,29 +33,25 @@
                 <TextBlock Text="Выберите способ оплаты"
                            Style="{StaticResource SubtitleStyle}"
                            Margin="0,0,0,20"/>
-
             </StackPanel>
 
             <!-- Кнопки оплаты -->
+            <StackPanel Grid.Row="1"            
+                        VerticalAlignment="Center">
 
-            <StackPanel Grid.Row="1"
-            VerticalAlignment="Center">
+                <Button Content="Наличные"            
+                        Margin="0,0,0,12"           
+                        FontSize="15"           
+                        Style="{StaticResource PrimaryButtonStyle}"          
+                        Click="CashButton_Click"/>
 
-                <Button Content="Наличные"
-            Margin="0,0,0,12"
-            FontSize="15"
-            Style="{StaticResource PrimaryButtonStyle}"
-            Click="CashButton_Click"/>
-
-                <Button Content="Банковская карта"
-            FontSize="15"
-            Style="{StaticResource PrimaryButtonStyle}"
-            Click="CardButton_Click"/>
-
+                <Button Content="Банковская карта"            
+                        FontSize="15"         
+                        Style="{StaticResource PrimaryButtonStyle}"          
+                        Click="CardButton_Click"/>
             </StackPanel>
 
             <!-- Отмена -->
-
             <Button Grid.Row="2"
                     Content="Отмена"
                     Width="120"
@@ -64,9 +59,6 @@
                     HorizontalAlignment="Center"
                     Style="{StaticResource DangerButtonStyle}"
                     Click="CancelButton_Click"/>
-
         </Grid>
-
     </Border>
-
 </Window>

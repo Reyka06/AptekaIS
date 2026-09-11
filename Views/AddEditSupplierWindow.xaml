@@ -8,27 +8,25 @@
         ResizeMode="CanResize">
 
     <Grid Margin="25">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- ЗАГОЛОВОК -->
+        <!-- Заголовок -->
         <TextBlock Text="Информация о поставщике"
                    FontSize="22"
                    FontWeight="Bold"
                    Foreground="{StaticResource PrimaryColor}"
                    Margin="0,0,0,20"/>
 
-        <!-- ОСНОВНОЙ БЛОК -->
+        <!-- Основной блок -->
         <Border Grid.Row="1"
                 Style="{StaticResource InputBorderStyle}"
                 Padding="20">
 
             <Grid>
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -74,9 +72,7 @@
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                   MaxHeight="250">
-
                         <ItemsControl x:Name="ManufacturersList">
-
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel ItemWidth="350"/>
@@ -91,18 +87,13 @@
                                               Margin="0,5"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-
                         </ItemsControl>
-
                     </ScrollViewer>
-
                 </Border>
-
             </Grid>
-
         </Border>
 
-        <!-- КНОПКИ -->
+        <!-- Кнопки -->
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
@@ -120,9 +111,6 @@
                     Height="35"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Click="SaveButton_Click"/>
-
         </StackPanel>
-
     </Grid>
-
 </Window>

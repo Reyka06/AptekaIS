@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- SEARCH -->
+        <!-- Поиск -->
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="8"
@@ -34,7 +34,7 @@
                      Style="{StaticResource ModernTextBoxStyle}"/>
         </Border>
 
-        <!-- FILTERS -->
+        <!-- Фильтры -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
             <ComboBox x:Name="MainCategoryFilterComboBox"
                       Width="220"
@@ -52,7 +52,7 @@
                       SelectionChanged="SubCategoryFilter_Changed"/>
         </StackPanel>
 
-        <!-- BUTTONS -->
+        <!-- Кнопки -->
         <WrapPanel Grid.Row="3" Margin="0,0,0,10">
             <Button x:Name="AddButton"
                     Style="{StaticResource PrimaryButtonStyle}"
@@ -76,7 +76,7 @@
                     Click="DeleteButton_Click"/>
         </WrapPanel>
 
-        <!-- TABLE -->
+        <!-- Таблица -->
         <DataGrid x:Name="ProductsGrid"
                   Grid.Row="4"
                   AutoGenerateColumns="False"

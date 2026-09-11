@@ -22,6 +22,7 @@ namespace AptekaIS.Views.UserControls
             LoadProducts();
             SetPermissions();
         }
+
         private void SetPermissions()
         {
             string roleName = App.currentUser?.Roles?.Name;
@@ -30,7 +31,6 @@ namespace AptekaIS.Views.UserControls
             if (roleName == "Заведующий")
             {
                 ShowAllButtons();
-                return;
             }
 
             // Фармацевт - скрываем кнопки
@@ -39,9 +39,9 @@ namespace AptekaIS.Views.UserControls
                 AddButton.Visibility = Visibility.Collapsed;
                 EditButton.Visibility = Visibility.Collapsed;
                 DeleteButton.Visibility = Visibility.Collapsed;
-                return;
             }
         }
+
         private void ShowAllButtons()
         {
             AddButton.Visibility = Visibility.Visible;
@@ -231,6 +231,7 @@ namespace AptekaIS.Views.UserControls
                 LoadProducts();
             }
         }
+
         public void RefreshData()
         {
             if (_suppressRefresh)
@@ -241,6 +242,7 @@ namespace AptekaIS.Views.UserControls
 
             LoadProducts();
         }
+
         public IDisposable BeginUiLock()
         {
             _suppressRefresh = true;
@@ -250,6 +252,7 @@ namespace AptekaIS.Views.UserControls
                 _suppressRefresh = false;
             });
         }
+
         public class ActionOnDispose : IDisposable
         {
             private Action _action;
@@ -272,5 +275,4 @@ namespace AptekaIS.Views.UserControls
         public string SpecialPropertiesList { get; set; }
         public byte[] MainImage { get; set; }
     }
-
 }

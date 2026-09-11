@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- TITLE -->
+        <!-- Заголовок -->
         <TextBlock Grid.Row="0"
                    Text="Информация о пользователе"
                    FontSize="22"
@@ -23,7 +23,6 @@
                    Foreground="{StaticResource PrimaryColor}"
                    Margin="0,0,0,20"/>
 
-        <!-- CONTENT -->
         <Border Grid.Row="1"
                 Style="{StaticResource InputBorderStyle}"
                 Padding="15">
@@ -78,12 +77,10 @@
                           DisplayMemberPath="Name"
                           SelectedValuePath="Id"
                           Margin="0,5,0,0"/>
-
             </Grid>
-
         </Border>
 
-        <!-- BUTTONS -->
+        <!-- Кнопки -->
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
@@ -101,9 +98,6 @@
                     Height="35"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Click="SaveButton_Click"/>
-
         </StackPanel>
-
     </Grid>
-
 </Window>

@@ -88,7 +88,7 @@ namespace AptekaIS.Views
             if (mainImage != null)
             {
                 selectedImageData = mainImage.ImageData;
-                ImageFileNameTextBox.Text =$"{editingProduct.Name}_{mainImage.Id}.img";
+                ImageFileNameTextBox.Text = $"{editingProduct.Name}_{mainImage.Id}.img";
             }
 
             if (editingProduct.SubCategoryId != null)

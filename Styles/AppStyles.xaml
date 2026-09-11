@@ -36,7 +36,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0,10,0,0"/>
     </Style>
-    
+
     <!-- Стиль для всех окон -->
     <Style TargetType="Window">
         <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
@@ -51,7 +51,7 @@
         <Setter Property="Background" Value="White"/>
         <Setter Property="Margin" Value="0,0,0,10"/>
 
-        <!-- эффект фокуса -->
+        <!-- Эффект фокуса -->
         <Style.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="True">
                 <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
@@ -70,112 +70,57 @@
         <Setter Property="Padding" Value="12,10"/>
         <Setter Property="FontSize" Value="14"/>
     </Style>
+    
     <!-- ========================= -->
-    <!--         BUTTONS          -->
+    <!--         BUTTONS           -->
     <!-- ========================= -->
-
+    
     <!-- Базовый стиль -->
-    <Style x:Key="BaseButtonStyle"
-       TargetType="Button">
-
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Padding" Value="18,8"/>
-
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background"
-            Value="{StaticResource PrimaryColor}"/>
-
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
-
         <Setter Property="Cursor" Value="Hand"/>
-
         <Setter Property="Template">
-
             <Setter.Value>
-
                 <ControlTemplate TargetType="Button">
-
-                    <Border x:Name="bg"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="8">
-
-                        <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
-
+                    <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-
                     <ControlTemplate.Triggers>
-
-                        <!-- hover -->
-                        <Trigger Property="IsMouseOver"
-                             Value="True">
-
-                            <Setter TargetName="bg"
-                                Property="Opacity"
-                                Value="0.92"/>
-
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.92"/>
                         </Trigger>
-
-                        <!-- pressed -->
-                        <Trigger Property="IsPressed"
-                             Value="True">
-
-                            <Setter TargetName="bg"
-                                Property="Opacity"
-                                Value="0.82"/>
-
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.82"/>
                         </Trigger>
-
-                        <!-- disabled -->
-                        <Trigger Property="IsEnabled"
-                             Value="False">
-
-                            <Setter TargetName="bg"
-                                Property="Opacity"
-                                Value="0.5"/>
-
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="bg" Property="Opacity" Value="0.5"/>
                         </Trigger>
-
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
-
             </Setter.Value>
-
         </Setter>
-
     </Style>
 
     <!-- Основная кнопка -->
-    <Style x:Key="PrimaryButtonStyle"
-       TargetType="Button"
-       BasedOn="{StaticResource BaseButtonStyle}"/>
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}"/>
 
     <!-- Опасная кнопка -->
-    <Style x:Key="DangerButtonStyle"
-       TargetType="Button"
-       BasedOn="{StaticResource BaseButtonStyle}">
-
-        <Setter Property="Background"
-            Value="{StaticResource ErrorColor}"/>
-
+    <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource ErrorColor}"/>
     </Style>
 
     <!-- Светлая кнопка -->
-    <Style x:Key="SecondaryButtonStyle"
-       TargetType="Button"
-       BasedOn="{StaticResource BaseButtonStyle}">
-
-        <Setter Property="Background"
-            Value="#E9ECEF"/>
-
-        <Setter Property="Foreground"
-            Value="{StaticResource TextDarkColor}"/>
-
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="#E9ECEF"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkColor}"/>
     </Style>
+    
     <!-- Стиль для шапки окна -->
     <Style x:Key="HeaderBorderStyle" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
@@ -218,19 +163,13 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="6"
                         Padding="{TemplateBinding Padding}">
-
-                        <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-
                     <ControlTemplate.Triggers>
-                        <!-- hover -->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="bg" Property="Background" Value="#30FFFFFF"/>
                             <Setter TargetName="bg" Property="BorderBrush" Value="#80FFFFFF"/>
                         </Trigger>
-
-                        <!-- нажатие -->
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="bg" Property="Background" Value="#50FFFFFF"/>
                         </Trigger>
@@ -239,6 +178,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <!-- Стиль для TabControl -->
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>
@@ -279,6 +219,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <!-- ========================= -->
     <!--         DATAGRID         -->
     <!-- ========================= -->
@@ -352,6 +293,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
+    
     <!-- ========================= -->
     <!--     КНОПКИ +/- В КОРЗИНЕ   -->
     <!-- ========================= -->
@@ -389,10 +331,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <!--Текст боксы-->
-    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
 
+    <!--Текстовые поля-->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
         <Setter Property="Foreground" Value="#2D3436"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#D0D5DA"/>
@@ -400,28 +341,19 @@
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="10,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-
         <Setter Property="Template">
             <Setter.Value>
-
                 <ControlTemplate TargetType="TextBox">
-
                     <Border x:Name="Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="8">
-
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                  Margin="8,0"/>
-
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="8,0"/>
                     </Border>
-
                 </ControlTemplate>
-
             </Setter.Value>
         </Setter>
-
     </Style>
-
+    
 </ResourceDictionary>

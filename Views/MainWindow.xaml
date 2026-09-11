@@ -26,8 +26,13 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Image Source="/Resource/sign-emergency.ico" Width="30" Height="30" Margin="0,0,10,0"/>
+                <StackPanel Grid.Column="0" 
+                            Orientation="Horizontal" 
+                            VerticalAlignment="Center">
+                    <Image Source="/Resource/sign-emergency.ico" 
+                           Width="30" 
+                           Height="30" 
+                           Margin="0,0,10,0"/>
                     <TextBlock x:Name="UserInfoText"
                                Text="Загрузка..."
                                Foreground="White"
@@ -36,7 +41,9 @@
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Grid.Column="2" 
+                            Orientation="Horizontal" 
+                            VerticalAlignment="Center">
                     <TextBlock x:Name="TimeText"
                                Foreground="#DDFFFFFF"
                                FontSize="15"
@@ -51,12 +58,17 @@
 
         <!-- Контент -->
         <Grid Grid.Row="1" Margin="5">
-            <TabControl x:Name="MainTabControl" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl x:Name="MainTabControl" 
+                        SelectionChanged="TabControl_SelectionChanged">
                 <TabItem x:Name="TabCashier">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/cashier.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Касса" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/cashier.png" 
+                                   Width="30" 
+                                   Height="30" 
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Касса" 
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:CashierView x:Name="CashierViewControl"/>
@@ -65,8 +77,12 @@
                 <TabItem x:Name="TabRequests">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/requests.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Заявки" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/requests.png" 
+                                   Width="30"
+                                   Height="30" 
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Заявки" 
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:RequestsView/>
@@ -75,8 +91,12 @@
                 <TabItem x:Name="TabReceipt">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/receipt.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Приход" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/receipt.png" 
+                                   Width="30"
+                                   Height="30"
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Приход" 
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:ReceiptView x:Name="ReceiptViewControl"/>
@@ -85,8 +105,12 @@
                 <TabItem x:Name="TabWriteOff">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/writeoff.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Списание" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/writeoff.png"
+                                   Width="30" 
+                                   Height="30"
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Списание"
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:WriteOffView/>
@@ -95,8 +119,12 @@
                 <TabItem x:Name="TabReports">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/reports.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Отчёты" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/reports.png" 
+                                   Width="30"
+                                   Height="30" 
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Отчёты"
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:ReportsView/>
@@ -105,8 +133,12 @@
                 <TabItem x:Name="TabProducts">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/products.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Товары" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/products.png"
+                                   Width="30"
+                                   Height="30" 
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Товары"
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:ProductsView x:Name="ProductsViewControl"/>
@@ -115,8 +147,12 @@
                 <TabItem x:Name="TabSuppliers">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/suppliers.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Поставщики" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/suppliers.png"
+                                   Width="30" 
+                                   Height="30"
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Поставщики"
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:SuppliersView/>
@@ -125,8 +161,12 @@
                 <TabItem x:Name="TabUsers">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resource/users.png" Width="30" Height="30" Margin="0,0,8,0"/>
-                            <TextBlock Text="Пользователи" VerticalAlignment="Center"/>
+                            <Image Source="/Resource/users.png" 
+                                   Width="30"
+                                   Height="30"
+                                   Margin="0,0,8,0"/>
+                            <TextBlock Text="Пользователи" 
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                     <uc:UsersView/>

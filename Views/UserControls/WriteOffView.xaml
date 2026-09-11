@@ -9,7 +9,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- ПАНЕЛЬ КНОПОК -->
+        <!-- Панель кнопок -->
         <WrapPanel Grid.Row="0"
                    Margin="0,0,0,15">
 
@@ -36,7 +36,7 @@
 
         </WrapPanel>
 
-        <!-- ТАБЛИЦА СПИСАНИЙ -->
+        <!-- Таблица списаний -->
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="8"
@@ -75,13 +75,8 @@
                     <DataGridTextColumn Header="Кто списал"
                                         Binding="{Binding UserName}"
                                         Width="180"/>
-
                 </DataGrid.Columns>
-
             </DataGrid>
-
         </Border>
-
     </Grid>
-
 </UserControl>
